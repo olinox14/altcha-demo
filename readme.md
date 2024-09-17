@@ -1,6 +1,6 @@
 # Model: Symfony+Nuxt+Caddy
 
-A demonstration project of the usage of [Altcha](https://altcha.org/) in a Symfony6 + Nuxt.js 3 environnement.
+A minimal implementation of Altcha in a Symfony6 + Nuxt.js 3 project
 
 
 ## Install
