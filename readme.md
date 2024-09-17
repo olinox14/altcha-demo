@@ -24,6 +24,17 @@ Run from the project directory:
 
     docker-compose build
 
+Install dependencies : 
+
+    docker exec -it api bash
+    composer install
+    exit
+
+    docker exec -it app bash
+    yarn install
+    exit
+
+
 ## Run
 
 Run from the project directory:
