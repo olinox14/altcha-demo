@@ -1,0 +1,25 @@
+{
+  debug
+}
+
+local.api.altcha-demo.net {
+  tls internal
+  reverse_proxy http://api:80
+  log {
+    output file /var/log/api-access.log {
+      roll_size 10mb
+      roll_keep 2
+    }
+  }
+}
+
+local.app.altcha-demo.net {
+  tls internal
+  reverse_proxy http://app:3002
+  log {
+    output file /var/log/app-access.log {
+      roll_size 10mb
+      roll_keep 2
+    }
+  }
+}

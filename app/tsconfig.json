@@ -1,0 +1,20 @@
+{
+  // https://nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "useDefineForClassFields": false,
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "types": [
+      "@nuxt/types",
+    ],
+    "exclude": [
+      "node_modules",
+      ".nuxt"
+    ],
+    "typeRoots": [
+      "./types"
+    ]
+  }
+}

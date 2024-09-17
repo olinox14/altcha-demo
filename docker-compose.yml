@@ -1,0 +1,76 @@
+services:
+  caddy:
+    hostname: caddy
+    container_name: caddy
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: docker/caddy/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./docker/caddy/caddy:/etc/caddy:cached
+
+  db:
+    hostname: db
+    container_name: db
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data:rw
+
+  api:
+    hostname: api
+    container_name: api
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+      args:
+        - OS=${OS}
+    restart: always
+    environment:
+      - PHP_IDE_CONFIG=serverName=api
+      - HTTPS_METHOD=noredirect
+    volumes:
+      - ./api:/var/www/html:cached
+      - ./api/vendor:/var/www/html/vendor:delegated
+      - appdata5:/var/www/html/var/cache/
+      - appdata5:/var/www/html/var/logs/
+    depends_on:
+      - db
+
+  app:
+    hostname: app
+    container_name: app
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    tty: true
+    ports:
+      - "3002:3002"
+      - "3003:3003"
+    environment:
+      - NODE_ENV=docker
+      - HTTPS_METHOD=noredirect
+    volumes:
+      - ./app:/var/app:rw,cached
+    depends_on:
+      - api
+
+volumes:
+  db_data: ~
+  appdata5: ~
+  caddy_data: ~
+  caddy_config: ~
+
