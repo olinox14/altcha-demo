@@ -48,3 +48,8 @@ Start the nuxt server:
     yarn dev
 
 Your nuxt app should now be accessible in your browser at https://local.app.altcha-demo.net.
+
+## Note
+
+You'll probably have to reach at least once the url https://local.api.altcha-demo.net in your browser 
+to add a security exception. Not doing so could lead to a CORS exception while validating the captcha.
