@@ -1,14 +1,18 @@
 export default {
   app: {
     head: {
-      title: 'App',
+      title: 'Altcha Demo',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' },
-        { name: 'msapplication-TileColor', content: '#324250' },
-        { name: 'msapplication-TileImage', content: '/favicon/mstile-144x144.png' }
-      ],
+        { hid: 'description', name: 'description', content: '' }
+      ]
+    }
+  },
+  runtimeConfig: {
+    challengeUrl: 'http://altchademo_api/api/challenge',
+    public: {
+      challengeUrl: 'https://local.api.altcha-demo.net/api/challenge'
     }
   },
   typescript: {
@@ -18,13 +22,12 @@ export default {
     define: {
       'process.env.DEBUG': process.env.DEBUG,
     },
-    //@ts-ignore
-    server : {
-      //@ts-ignore
+    server: {
       port: 443,
       hmr: {
         protocol: 'wss'
       }
-    },
-  }
+    }
+  },
+  compatibilityDate: '2024-09-18'
 }
