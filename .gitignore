@@ -3,3 +3,5 @@
 /helm/api-platform/charts/*
 !/helm/api-platform/charts/.gitignore
 /.project
+
+app/.yarn/install-state.gz
