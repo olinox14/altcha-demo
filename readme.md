@@ -1,6 +1,6 @@
 # Model: Symfony+Nuxt+Caddy
 
-A minimal implementation of [Altcha](https://altcha.org/) in a Symfony6 + Nuxt.js 3 environment
+A minimal implementation of [Altcha](https://altcha.org/) in a Symfony 7 / ApiPlatform 3 + Nuxt.js 3 environment
 
 
 ## Install
