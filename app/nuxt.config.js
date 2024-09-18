@@ -20,7 +20,7 @@ export default {
   },
   vite: {
     define: {
-      'process.env.DEBUG': process.env.DEBUG,
+      'process.env.DEBUG': process.env.DEBUG
     },
     server: {
       port: 443,
