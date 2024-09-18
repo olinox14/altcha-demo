@@ -1,6 +1,6 @@
 # Model: Symfony+Nuxt+Caddy
 
-A minimal implementation of Altcha in a Symfony6 + Nuxt.js 3 project
+A minimal implementation of [Altcha](https://altcha.org/) in a Symfony6 + Nuxt.js 3 environment
 
 
 ## Install
@@ -23,14 +23,15 @@ Change the DB root password in :
 Run from the project directory:
 
     docker-compose build
+    docker-compose up
 
 Install dependencies : 
 
-    docker exec -it api bash
+    docker exec -it altchademo_api bash
     composer install
     exit
 
-    docker exec -it app bash
+    docker exec -it altchademo_app bash
     yarn install
     exit
 
@@ -43,7 +44,7 @@ Run from the project directory:
 
 Start the nuxt server:
 
-    docker exec -it app bash
+    docker exec -it altchademo_app bash
     yarn dev
 
-Your nuxt app should now be accessible in your browser at https://local.app.altcha-demo.net
+Your nuxt app should now be accessible in your browser at https://local.app.altcha-demo.net.

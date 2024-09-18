@@ -1,7 +1,9 @@
+version: '3.3'
+
 services:
-  caddy:
-    hostname: caddy
-    container_name: caddy
+  altchademo_caddy:
+    hostname: altchademo_caddy
+    container_name: altchademo_caddy
     restart: unless-stopped
     build:
       context: .
@@ -14,9 +16,9 @@ services:
       - caddy_config:/config
       - ./docker/caddy/caddy:/etc/caddy:cached
 
-  db:
-    hostname: db
-    container_name: db
+  altchademo_db:
+    hostname: altchademo_db
+    container_name: altchademo_db
     build:
       context: .
       dockerfile: docker/db/Dockerfile
@@ -30,9 +32,9 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data:rw
 
-  api:
-    hostname: api
-    container_name: api
+  altchademo_api:
+    hostname: altchademo_api
+    container_name: altchademo_api
     build:
       context: .
       dockerfile: docker/api/Dockerfile
@@ -48,11 +50,11 @@ services:
       - appdata5:/var/www/html/var/cache/
       - appdata5:/var/www/html/var/logs/
     depends_on:
-      - db
+      - altchademo_db
 
-  app:
-    hostname: app
-    container_name: app
+  altchademo_app:
+    hostname: altchademo_app
+    container_name: altchademo_app
     build:
       context: .
       dockerfile: docker/app/Dockerfile
@@ -66,7 +68,7 @@ services:
     volumes:
       - ./app:/var/app:rw,cached
     depends_on:
-      - api
+      - altchademo_api
 
 volumes:
   db_data: ~
