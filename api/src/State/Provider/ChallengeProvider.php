@@ -11,11 +11,12 @@ use ApiPlatform\State\ProviderInterface;
 use ApiPlatform\Metadata\Operation;
 use Symfony\Component\HttpFoundation\Response;
 
-class ChallengeRequestProvider implements ProviderInterface
+class ChallengeProvider implements ProviderInterface
 {
     public function __construct(
         private readonly string $hmacKey
     ) {}
+
     /**
      * @param mixed[] $uriVariables
      * @param mixed[] $context
