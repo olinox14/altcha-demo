@@ -16,13 +16,20 @@ const runtimeConfig = useRuntimeConfig()
 
 const widget: Ref<HTMLElement | null> = ref(null)
 
-const emit = defineEmits(['verified'])
+defineProps({
+  modelValue: {
+    type: String as PropType<string | null>,
+    required: true
+  }
+})
+
+const emit = defineEmits(['update:payload'])
 
 const onStateChange = (e: CustomEvent | Event) => {
   if ('detail' in e) {
     const { payload, state } = e.detail
     if (state === 'verified' && payload) {
-      emit('verified')
+      emit('update:modelValue', payload)
     }
   }
 }
