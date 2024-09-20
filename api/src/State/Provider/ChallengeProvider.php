@@ -9,6 +9,7 @@ use AltchaOrg\Altcha\ChallengeOptions;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\State\ProviderInterface;
 use ApiPlatform\Metadata\Operation;
+use DateMalformedStringException;
 use Symfony\Component\HttpFoundation\Response;
 
 class ChallengeProvider implements ProviderInterface
@@ -20,6 +21,7 @@ class ChallengeProvider implements ProviderInterface
     /**
      * @param mixed[] $uriVariables
      * @param mixed[] $context
+     * @throws DateMalformedStringException
      */
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): Challenge
     {
@@ -29,7 +31,8 @@ class ChallengeProvider implements ProviderInterface
 
         $options = new ChallengeOptions([
             'hmacKey'   => $this->hmacKey,
-            'maxNumber' => 100000
+            'maxNumber' => 100000,
+            'expires' => (new \DateTime())->modify('+15 minute')
         ]);
 
         return Altcha::createChallenge($options);

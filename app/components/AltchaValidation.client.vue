@@ -3,6 +3,7 @@
     v-show="widget !== null"
     ref="widget"
     :challengeurl="runtimeConfig.public.challengeUrl"
+    :expire="expire"
     debug
   />
 </template>
@@ -15,6 +16,9 @@ import { useRuntimeConfig } from 'nuxt/app'
 const runtimeConfig = useRuntimeConfig()
 
 const widget: Ref<HTMLElement | null> = ref(null)
+
+// Setup a 15min expiration date for the payload
+const expire: number = 15 * 60 * 1000
 
 defineProps({
   modelValue: {
