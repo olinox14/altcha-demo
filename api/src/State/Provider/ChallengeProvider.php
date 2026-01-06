@@ -6,6 +6,7 @@ namespace App\State\Provider;
 use AltchaOrg\Altcha\Altcha;
 use AltchaOrg\Altcha\Challenge;
 use AltchaOrg\Altcha\ChallengeOptions;
+use AltchaOrg\Altcha\Hasher\Algorithm;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\State\ProviderInterface;
 use ApiPlatform\Metadata\Operation;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ChallengeProvider implements ProviderInterface
 {
     public function __construct(
-        private readonly string $hmacKey
+        private readonly Altcha $altcha
     ) {}
 
     /**
@@ -29,12 +30,12 @@ class ChallengeProvider implements ProviderInterface
             throw new \RuntimeException('not supported', Response::HTTP_METHOD_NOT_ALLOWED);
         }
 
-        $options = new ChallengeOptions([
-            'hmacKey'   => $this->hmacKey,
-            'maxNumber' => 100000,
-            'expires' => (new \DateTime())->modify('+15 minute')
-        ]);
+        $options = new ChallengeOptions(
+            Algorithm::SHA256,
+            100000,
+            (new \DateTime())->modify('+15 minute')
+        );
 
-        return Altcha::createChallenge($options);
+        return $this->altcha->createChallenge($options);
     }
 }

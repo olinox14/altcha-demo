@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ChallengeProcessor implements ProcessorInterface
 {
     public function __construct(
-        private readonly string $hmacKey
+        private readonly Altcha $altcha
     ) {}
 
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): Challenge
@@ -25,9 +25,8 @@ class ChallengeProcessor implements ProcessorInterface
         /** @var Challenge $challenge */
         $challenge = $data;
 
-        $valid = Altcha::verifySolution(
+        $valid = $this->altcha->verifySolution(
             $challenge->getPayload(),
-            $this->hmacKey,
             true
         );
 
