@@ -1,4 +1,4 @@
-FROM node:18.19.0-buster
+FROM node:24.12.0-bullseye
 
 ENV WORKDIR /var/app
 
