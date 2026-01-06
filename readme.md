@@ -1,7 +1,12 @@
-# Model: Symfony+Nuxt+Caddy
+# Altcha Demo
 
-A minimal implementation of [Altcha](https://altcha.org/) in a Symfony 7 / ApiPlatform 3 + Nuxt.js 3 environment
+## Overview
 
+This project is a reference implementation of **ALTCHA** (a privacy-focused PoW anti-spam solution) using a modern decoupled stack.
+
+- **Backend:** Symfony 7 & API Platform 3, featuring custom State Providers and Processors to generate and verify challenges via the `altcha-org/altcha` PHP library.
+- **Frontend:** Nuxt 3 (Vue.js) showcasing a client-side integration of the `<altcha-widget>` with reactive state handling.
+- **Infrastructure:** Fully dockerized environment with Caddy as a reverse proxy for seamless local development.
 
 ## Install
 
@@ -49,7 +54,7 @@ Start the nuxt server:
 
 Your nuxt app should now be accessible in your browser at https://local.app.altcha-demo.net.
 
-## Note
+## /!\ Warning
 
 You'll probably have to reach at least once the url https://local.api.altcha-demo.net in your browser 
 to add a security exception. Not doing so could lead to a CORS exception while validating the captcha.
