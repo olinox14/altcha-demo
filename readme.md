@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a reference implementation of **ALTCHA** (a privacy-focused PoW anti-spam solution) using a modern decoupled stack.
+This project is a reference implementation of **[ALTCHA](https://altcha.org/fr/)** (a privacy-focused PoW anti-spam solution) using a modern decoupled stack.
 
 - **Backend:** Symfony 7 & API Platform 3, featuring custom State Providers and Processors to generate and verify challenges via the `altcha-org/altcha` PHP library.
 - **Frontend:** Nuxt 3 (Vue.js) showcasing a client-side integration of the `<altcha-widget>` with reactive state handling.
