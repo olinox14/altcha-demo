@@ -12,8 +12,8 @@
     "lintfix": "yarn lint:js --fix"
   },
   "dependencies": {
-    "altcha": "^1.0.0",
-    "nuxt": "^3.11.2",
+    "altcha": "^2.3.0",
+    "nuxt": "3.20.2",
     "sass": "^1.69.5"
   },
   "devDependencies": {

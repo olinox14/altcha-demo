@@ -23,6 +23,7 @@ export default {
       'process.env.DEBUG': process.env.DEBUG
     },
     server: {
+      allowedHosts: true,
       port: 443,
       hmr: {
         protocol: 'wss'
